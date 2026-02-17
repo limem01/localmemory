@@ -145,7 +145,3 @@ Files placed in `backend/data/watched/` (or configured `WATCHED_DIR`) are automa
 ## 📝 License
 
 MIT — do whatever you want with it.
-
----
-
-*Built with ❤️ for people who care about owning their own data.*
