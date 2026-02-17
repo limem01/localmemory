@@ -52,7 +52,7 @@ export function Sidebar() {
           </div>
           <div className="hidden lg:block">
             <h1 className="font-bold text-sm text-foreground">LocalMemory</h1>
-            <p className="text-xs text-muted-foreground">Your second brain</p>
+            <p className="text-xs text-muted-foreground">all yours, all local</p>
           </div>
         </div>
 
@@ -130,6 +130,11 @@ export function Sidebar() {
               )}
             </div>
           </div>
+        </div>
+
+        {/* Version footer */}
+        <div className="hidden lg:block px-4 py-2 text-[10px] text-muted-foreground/50">
+          v0.1 · made with coffee & spite
         </div>
       </aside>
     </TooltipProvider>

@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Text, Boolean, BigInteger, Enum as SAEnum
+from sqlalchemy import Column, Integer, String, Text, Boolean, BigInteger, Enum as SAEnum, ForeignKey
 from sqlalchemy.orm import relationship
 import enum
 
@@ -48,7 +48,7 @@ class DocumentChunk(Base, TimestampMixin):
     __tablename__ = "document_chunks"
 
     id = Column(Integer, primary_key=True, index=True)
-    document_id = Column(Integer, nullable=False, index=True)
+    document_id = Column(Integer, ForeignKey("documents.id"), nullable=False, index=True)
     chunk_index = Column(Integer, nullable=False)
     content = Column(Text, nullable=False)
     chroma_id = Column(String(256), nullable=True, unique=True, index=True)
@@ -56,7 +56,7 @@ class DocumentChunk(Base, TimestampMixin):
     word_count = Column(Integer, default=0)
 
     # Relationships
-    document = relationship("Document", back_populates="chunks", foreign_keys=[document_id])
+    document = relationship("Document", back_populates="chunks")
 
     def __repr__(self):
         return f"<DocumentChunk id={self.id} doc_id={self.document_id} chunk={self.chunk_index}>"

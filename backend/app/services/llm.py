@@ -29,8 +29,12 @@ class LLMService:
     def check_health(self) -> bool:
         """Check if Ollama is running and model is available."""
         try:
-            models = self.client.list()
-            model_names = [m["name"] for m in models.get("models", [])]
+            response = self.client.list()
+            # Handle both old dict format and new object format
+            if hasattr(response, 'models'):
+                model_names = [m.model for m in response.models]
+            else:
+                model_names = [m["name"] for m in response.get("models", [])]
             return any(self.model in name for name in model_names)
         except Exception as e:
             logger.warning(f"Ollama health check failed: {e}")
@@ -39,8 +43,11 @@ class LLMService:
     def get_available_models(self) -> List[str]:
         """Get list of available Ollama models."""
         try:
-            models = self.client.list()
-            return [m["name"] for m in models.get("models", [])]
+            response = self.client.list()
+            # Handle both old dict format and new object format
+            if hasattr(response, 'models'):
+                return [m.model for m in response.models]
+            return [m["name"] for m in response.get("models", [])]
         except Exception:
             return []
 

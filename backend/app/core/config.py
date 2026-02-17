@@ -16,15 +16,15 @@ class Settings(BaseSettings):
     ollama_embed_model: str = "nomic-embed-text"
 
     # Database
-    database_url: str = "sqlite:////app/data/localmemory.db"
+    database_url: str = "sqlite:///./data/localmemory.db"
 
     # ChromaDB
-    chroma_path: str = "/app/data/chroma"
+    chroma_path: str = "./data/chroma"
     chroma_collection: str = "localmemory"
 
     # File storage
-    upload_dir: str = "/app/data/uploads"
-    watched_dir: str = "/app/data/watched"
+    upload_dir: str = "./data/uploads"
+    watched_dir: str = "./data/watched"
     max_upload_size: int = 50 * 1024 * 1024  # 50MB
 
     # Chunking

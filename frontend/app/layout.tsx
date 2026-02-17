@@ -8,9 +8,9 @@ import { Toaster } from "sonner";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "LocalMemory — Your Private Second Brain",
+  title: "LocalMemory",
   description:
-    "Your private second brain that remembers everything forever — 100% local, proactive, and yours.",
+    "Your stuff, searchable. Runs locally, no cloud, no subscriptions.",
   icons: {
     icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>",
   },

@@ -145,7 +145,7 @@ function CreateMemoryForm({ onClose }: { onClose: () => void }) {
           onChange={(e) => setTitle(e.target.value)}
         />
         <Textarea
-          placeholder="What do you want to remember?"
+          placeholder="The thing you don't want to forget..."
           value={content}
           onChange={(e) => setContent(e.target.value)}
           className="min-h-[100px]"
@@ -291,8 +291,8 @@ export default function MemoryPage() {
             <Brain className="w-12 h-12 text-muted-foreground/50 mx-auto mb-4" />
             <p className="text-muted-foreground">
               {search || filterType || showPinnedOnly
-                ? "No memories match your filters"
-                : "No memories yet. Chat with your AI or add one manually."}
+                ? "Nothing matches that"
+                : "Empty for now. Use the chat or add something yourself."}
             </p>
           </CardContent>
         </Card>

@@ -52,7 +52,7 @@ export function ProactiveCard() {
           </div>
         ) : (
           <p className="text-sm text-muted-foreground">
-            Add some documents and I'll generate your daily digest. Start by uploading PDFs, notes, or text files.
+            Feed me some documents and I'll start surfacing the good stuff here.
           </p>
         )}
       </CardContent>

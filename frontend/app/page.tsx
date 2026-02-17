@@ -42,8 +42,8 @@ export default function Dashboard() {
             <h1 className="text-2xl font-bold text-foreground">LocalMemory</h1>
           </div>
           <p className="text-muted-foreground max-w-lg">
-            Your private second brain that remembers everything forever —{" "}
-            <span className="text-primary font-medium">100% local</span>, proactive, and yours.
+            Everything you read, saved, noted—findable forever.{" "}
+            <span className="text-primary font-medium">Runs on your machine</span>. No cloud. No subscriptions.
           </p>
         </div>
         <div className="flex gap-2">
@@ -155,10 +155,10 @@ export default function Dashboard() {
           {recentDocs?.items.length === 0 ? (
             <div className="text-center py-8">
               <Upload className="w-10 h-10 text-muted-foreground/50 mx-auto mb-3" />
-              <p className="text-muted-foreground text-sm">No documents yet</p>
+              <p className="text-muted-foreground text-sm">Nothing here yet</p>
               <Link href="/sources">
                 <Button variant="outline" size="sm" className="mt-3">
-                  Upload your first document
+                  Drop something in
                 </Button>
               </Link>
             </div>
@@ -188,9 +188,9 @@ export default function Dashboard() {
       {/* Quick Actions */}
       <div className="grid grid-cols-3 gap-4">
         {[
-          { href: "/chat", icon: MessageSquare, label: "Start chatting", desc: "Ask questions about your documents" },
-          { href: "/sources", icon: Upload, label: "Add sources", desc: "Upload PDFs, notes, and text files" },
-          { href: "/memory", icon: Sparkles, label: "View memories", desc: "Browse your captured knowledge" },
+          { href: "/chat", icon: MessageSquare, label: "Ask a question", desc: "Your stuff, searchable by conversation" },
+          { href: "/sources", icon: Upload, label: "Feed it", desc: "PDFs, notes, bookmarks, whatever" },
+          { href: "/memory", icon: Sparkles, label: "See what stuck", desc: "Things it pulled out and remembered" },
         ].map(({ href, icon: Icon, label, desc }) => (
           <Link key={href} href={href}>
             <Card className="hover:border-primary/40 hover:bg-accent/30 transition-all cursor-pointer h-full">

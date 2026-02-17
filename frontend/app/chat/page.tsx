@@ -48,7 +48,7 @@ export default function ChatPage() {
           <div className="p-2 space-y-0.5">
             {conversations?.length === 0 && (
               <p className="text-xs text-muted-foreground text-center py-8 px-2">
-                No conversations yet. Start chatting!
+                Nothing yet. Ask something →
               </p>
             )}
             {conversations?.map((conv) => (

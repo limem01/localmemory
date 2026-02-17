@@ -132,10 +132,10 @@ export default function SourcesPage() {
           <>
             <Upload className={cn("w-10 h-10 mx-auto mb-3", isDragActive ? "text-primary" : "text-muted-foreground")} />
             <p className="font-medium text-foreground">
-              {isDragActive ? "Drop files here" : "Drop files or click to upload"}
+              {isDragActive ? "Let go" : "Drag stuff here, or click"}
             </p>
             <p className="text-sm text-muted-foreground mt-1">
-              Supports PDF, TXT, DOCX, Markdown · Max 50MB per file
+              PDFs, text, DOCX, Markdown — up to 50MB each
             </p>
           </>
         )}
@@ -164,7 +164,7 @@ export default function SourcesPage() {
           <CardContent className="text-center py-16">
             <FileText className="w-12 h-12 text-muted-foreground/50 mx-auto mb-4" />
             <p className="text-muted-foreground">
-              {search ? "No documents match your search" : "No documents yet — upload your first one!"}
+              {search ? "Nothing matches" : "Drop some files in up there ↑"}
             </p>
           </CardContent>
         </Card>

@@ -194,16 +194,16 @@ export function ChatInterface() {
               <MessageSquare className="w-8 h-8 text-primary" />
             </div>
             <div>
-              <h2 className="text-lg font-semibold text-foreground">Ask your second brain</h2>
+              <h2 className="text-lg font-semibold text-foreground">What do you need?</h2>
               <p className="text-muted-foreground text-sm mt-1 max-w-sm">
-                Ask anything about your documents, notes, or memories. LocalMemory will find relevant context and answer intelligently.
+                Ask about anything you've saved. I'll dig through your stuff and piece together an answer.
               </p>
             </div>
             <div className="flex flex-wrap gap-2 justify-center mt-2">
               {[
-                "Summarize my recent notes",
-                "What do I know about machine learning?",
-                "Find information about project deadlines",
+                "What did I save about X?",
+                "Summarize my notes from last week",
+                "What were the key points from that PDF?",
               ].map((suggestion) => (
                 <button
                   key={suggestion}
@@ -235,7 +235,7 @@ export function ChatInterface() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
-              placeholder="Ask your second brain anything... (Enter to send, Shift+Enter for newline)"
+              placeholder="What are you looking for? (Enter to send)"
               className="min-h-[52px] max-h-[200px] pr-12 resize-none bg-card border-border"
               disabled={isStreaming}
               rows={1}
@@ -255,7 +255,7 @@ export function ChatInterface() {
           </Button>
         </form>
         <p className="text-xs text-muted-foreground mt-2 text-center">
-          Running 100% locally on your machine · No data leaves your computer
+          Everything stays on your machine. Nothing phones home.
         </p>
       </div>
     </div>

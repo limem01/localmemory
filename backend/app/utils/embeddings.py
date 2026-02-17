@@ -4,11 +4,23 @@ import hashlib
 import uuid
 import logging
 from typing import List, Optional
+import ollama
 
 from app.core.config import get_settings
 
 logger = logging.getLogger(__name__)
 settings = get_settings()
+
+# Ollama client singleton
+_ollama_client: Optional[ollama.Client] = None
+
+
+def get_ollama_client() -> ollama.Client:
+    """Get or create the Ollama client (singleton)."""
+    global _ollama_client
+    if _ollama_client is None:
+        _ollama_client = ollama.Client(host=settings.ollama_host)
+    return _ollama_client
 
 _chroma_client: Optional[chromadb.PersistentClient] = None
 
@@ -65,8 +77,6 @@ async def embed_and_store(
     Embed text chunks and store them in ChromaDB.
     Returns list of chroma IDs.
     """
-    import ollama
-
     if not chunks:
         return []
 
@@ -74,17 +84,18 @@ async def embed_and_store(
         client = get_chroma_client()
 
     collection = get_collection(client)
+    ollama_client = get_ollama_client()
     chroma_ids = []
 
     for chunk in chunks:
         try:
             # Generate embedding via Ollama
-            response = ollama.embeddings(
+            response = ollama_client.embeddings(
                 model=settings.ollama_embed_model,
                 prompt=chunk["content"],
-                host=settings.ollama_host,
             )
-            embedding = response["embedding"]
+            # Handle both dict and object response formats
+            embedding = response["embedding"] if isinstance(response, dict) else response.embedding
 
             chunk_id = generate_chunk_id(document_id, chunk["index"], chunk["content"])
 
@@ -119,8 +130,6 @@ async def search_similar(
     Search for similar chunks using query embedding.
     Returns list of results with content, metadata, and score.
     """
-    import ollama
-
     if top_k is None:
         top_k = settings.retrieval_top_k
 
@@ -128,6 +137,7 @@ async def search_similar(
         client = get_chroma_client()
 
     collection = get_collection(client)
+    ollama_client = get_ollama_client()
 
     # Check if collection has any documents
     count = collection.count()
@@ -135,12 +145,12 @@ async def search_similar(
         return []
 
     # Get query embedding
-    response = ollama.embeddings(
+    response = ollama_client.embeddings(
         model=settings.ollama_embed_model,
         prompt=query,
-        host=settings.ollama_host,
     )
-    query_embedding = response["embedding"]
+    # Handle both dict and object response formats
+    query_embedding = response["embedding"] if isinstance(response, dict) else response.embedding
 
     # Build where clause for document filtering
     where = None

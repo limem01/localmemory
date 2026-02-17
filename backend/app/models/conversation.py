@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Text, Boolean, Float, Enum as SAEnum
+from sqlalchemy import Column, Integer, String, Text, Boolean, Float, Enum as SAEnum, ForeignKey
 from sqlalchemy.orm import relationship
 import enum
 
@@ -32,7 +32,7 @@ class Message(Base, TimestampMixin):
     __tablename__ = "messages"
 
     id = Column(Integer, primary_key=True, index=True)
-    conversation_id = Column(Integer, nullable=False, index=True)
+    conversation_id = Column(Integer, ForeignKey("conversations.id"), nullable=False, index=True)
     role = Column(SAEnum(MessageRole), nullable=False)
     content = Column(Text, nullable=False)
     sources = Column(Text, nullable=True)  # JSON array of source doc IDs/titles
@@ -40,7 +40,7 @@ class Message(Base, TimestampMixin):
     latency_ms = Column(Float, nullable=True)
 
     # Relationships
-    conversation = relationship("Conversation", back_populates="messages", foreign_keys=[conversation_id])
+    conversation = relationship("Conversation", back_populates="messages")
 
     def __repr__(self):
         return f"<Message id={self.id} role={self.role} conv={self.conversation_id}>"

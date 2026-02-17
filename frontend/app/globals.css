@@ -16,7 +16,7 @@
     --input: 216 34% 17%;
     --card: 224 71% 4%;
     --card-foreground: 213 31% 91%;
-    --primary: 210 100% 66%;
+    --primary: 230 80% 68%;
     --primary-foreground: 222 47% 11%;
     --secondary: 222 47% 11%;
     --secondary-foreground: 210 40% 98%;
@@ -124,4 +124,21 @@
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
+}
+
+/* Custom selection */
+::selection {
+  background: hsl(var(--primary) / 0.3);
+  color: hsl(var(--foreground));
+}
+
+/* Subtle glow on focus */
+input:focus, textarea:focus {
+  box-shadow: 0 0 0 1px hsl(var(--primary) / 0.2);
+}
+
+/* Remove outline jank */
+*:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px hsl(var(--primary) / 0.3);
 }
