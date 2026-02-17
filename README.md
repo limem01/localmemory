@@ -4,7 +4,8 @@
 
 LocalMemory is a full-stack AI knowledge management system that runs entirely on your machine. Upload documents, chat with your knowledge base, and let your AI assistant proactively surface insights — all without a single byte leaving your computer.
 
-<img width="1526" height="917" alt="image" src="https://github.com/user-attachments/assets/dbc146b7-11b5-4611-8ffc-3ae9df1f990e" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/e86c0c0b-1d8b-4a5a-a31d-c5f2bdaaf7d4" />
+
 
 
 ---
