@@ -1,0 +1,58 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+.env
+*.egg-info/
+dist/
+build/
+
+# SQLite
+*.db
+*.sqlite3
+
+# Node
+node_modules/
+.next/
+out/
+dist/
+.npm
+
+# Data (user content — never commit)
+backend/data/chroma/
+backend/data/uploads/
+backend/data/watched/
+!backend/data/.gitkeep
+!backend/data/chroma/.gitkeep
+!backend/data/uploads/.gitkeep
+!backend/data/watched/.gitkeep
+
+# Environment
+.env
+.env.local
+.env.production.local
+.env.development.local
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# IDE
+.idea/
+.vscode/settings.json
+*.sublime-project
+*.sublime-workspace
+
+# Docker
+.docker/
+
+# Logs
+*.log
+logs/

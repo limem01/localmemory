@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 224 71% 4%;
+    --foreground: 213 31% 91%;
+    --muted: 223 47% 11%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 216 34% 17%;
+    --accent-foreground: 210 40% 98%;
+    --popover: 224 71% 4%;
+    --popover-foreground: 215 20% 65%;
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+    --card: 224 71% 4%;
+    --card-foreground: 213 31% 91%;
+    --primary: 210 100% 66%;
+    --primary-foreground: 222 47% 11%;
+    --secondary: 222 47% 11%;
+    --secondary-foreground: 210 40% 98%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+    --ring: 216 34% 17%;
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground));
+}
+
+/* Prose styles for AI responses */
+.prose-ai {
+  @apply text-foreground leading-relaxed;
+}
+.prose-ai p {
+  @apply mb-3;
+}
+.prose-ai ul, .prose-ai ol {
+  @apply mb-3 pl-4;
+}
+.prose-ai li {
+  @apply mb-1;
+}
+.prose-ai ul li {
+  @apply list-disc;
+}
+.prose-ai ol li {
+  @apply list-decimal;
+}
+.prose-ai code {
+  @apply bg-muted text-primary px-1.5 py-0.5 rounded text-sm font-mono;
+}
+.prose-ai pre {
+  @apply bg-muted p-4 rounded-lg overflow-x-auto mb-3;
+}
+.prose-ai pre code {
+  @apply bg-transparent p-0;
+}
+.prose-ai h1, .prose-ai h2, .prose-ai h3 {
+  @apply font-semibold mb-2 mt-4;
+}
+.prose-ai h1 { @apply text-xl; }
+.prose-ai h2 { @apply text-lg; }
+.prose-ai h3 { @apply text-base; }
+.prose-ai blockquote {
+  @apply border-l-2 border-primary pl-3 italic text-muted-foreground mb-3;
+}
+.prose-ai strong {
+  @apply font-semibold text-foreground;
+}
+.prose-ai a {
+  @apply text-primary underline underline-offset-2;
+}
+
+/* Shimmer loading animation */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--muted)) 25%,
+    hsl(var(--accent)) 37%,
+    hsl(var(--muted)) 63%
+  );
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Typing cursor */
+.typing-cursor::after {
+  content: '▋';
+  animation: blink 1s step-end infinite;
+  color: hsl(var(--primary));
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
